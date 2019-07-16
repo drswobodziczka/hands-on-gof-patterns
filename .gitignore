@@ -3,3 +3,7 @@
 
 # Ignore Gradle build output directory
 build
+
+#ignore Intellij Idea project files
+.idea
+hands-on-design-patters.*
