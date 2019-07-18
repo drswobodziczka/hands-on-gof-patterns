@@ -3,7 +3,7 @@ package com.intive.trainings.gof.behavioral.strategy
 
 import spock.lang.Specification
 
-class StrategyProblemWithoutStrategyPattern extends Specification {
+class NamesSorterSpec extends Specification {
 
     def "given list is sorted in natural order"() {
         setup:
@@ -18,16 +18,15 @@ class StrategyProblemWithoutStrategyPattern extends Specification {
 
     def "given list is sorted by words' length"() {
         setup:
-        def list = ["333", "22", "55555"]
+        def list = ["333", "xx", "15555"]
 
         when:
         new NamesSorter().sort(list, "byLength");
 
         then:
-        list == ["22", "333", "55555"]
+        list == ["xx", "333", "15555"]
     }
 
-//    @Ignore
     def "given list is sorted by number of 'a' letter inside"() {
         setup:
         def list = ["3a3aaa3", "2a2a", "a55555"]
