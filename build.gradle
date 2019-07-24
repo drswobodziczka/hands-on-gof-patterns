@@ -17,6 +17,9 @@ plugins {
 
     // Apply the groovy plugin to also add support for Groovy (needed for Spock)
     id 'groovy'
+
+    // apply lombok plugin to have fluent builders and lombok annotations for your java code
+    id "io.freefair.lombok" version "3.8.0"
 }
 
 repositories {
