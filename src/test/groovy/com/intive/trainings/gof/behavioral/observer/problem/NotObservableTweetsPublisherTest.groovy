@@ -1,5 +1,7 @@
-package com.intive.trainings.gof.behavioral.observer
+package com.intive.trainings.gof.behavioral.observer.problem
 
+import com.intive.trainings.gof.behavioral.observer.Tweet
+import com.intive.trainings.gof.behavioral.observer.problem.NotObservableTweetsPublisher
 import spock.lang.Specification
 
 class NotObservableTweetsPublisherTest extends Specification {

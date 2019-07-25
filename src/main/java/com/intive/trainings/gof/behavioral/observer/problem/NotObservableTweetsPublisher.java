@@ -1,4 +1,6 @@
-package com.intive.trainings.gof.behavioral.observer;
+package com.intive.trainings.gof.behavioral.observer.problem;
+
+import com.intive.trainings.gof.behavioral.observer.Tweet;
 
 import java.util.ArrayList;
 import java.util.List;

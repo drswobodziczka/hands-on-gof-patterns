@@ -1,5 +1,5 @@
 package com.intive.trainings.gof.behavioral.observer;
 
-interface TweetsConsumer {
+public interface TweetsConsumer {
     void consume(Tweet tweet);
 }

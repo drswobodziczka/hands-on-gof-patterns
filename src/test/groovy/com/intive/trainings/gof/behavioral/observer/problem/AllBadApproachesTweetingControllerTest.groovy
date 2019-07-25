@@ -1,10 +1,15 @@
-package com.intive.trainings.gof.behavioral.observer
+package com.intive.trainings.gof.behavioral.observer.problem
 
+import com.intive.trainings.gof.behavioral.observer.Tweet
+import com.intive.trainings.gof.behavioral.observer.TweetsConsumer
+import com.intive.trainings.gof.behavioral.observer.problem.MeddlesomeTweetsConsumer
+import com.intive.trainings.gof.behavioral.observer.problem.NotObservableTweetsPublisher
+import com.intive.trainings.gof.behavioral.observer.problem.TweetingController
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.newArrayList
 
-class AllBadApproachesTwitterTest extends Specification {
+class AllBadApproachesTweetingControllerTest extends Specification {
 
     def publisher = new NotObservableTweetsPublisher()
 
@@ -36,11 +41,11 @@ class AllBadApproachesTwitterTest extends Specification {
     * (-) publishing and consuming MUST be done synchronously and at the same time
     * */
     def "published tweet is read by all consumers thanks to mediator class"() {
-        given: "a tweet and consumers and the OBER Twitter"
+        given: "a tweet and consumers and the OBER TweetingController"
         def consumers = newArrayList Mock(TweetsConsumer), Mock(TweetsConsumer)
         def message = "aha!"
         def tweet = Tweet.builder().message(message).build()
-        def twitter = new Twitter(publisher, consumers)
+        def twitter = new TweetingController(publisher, consumers)
 
         when: "tweet is published by twitter"
         twitter.tweet(tweet)

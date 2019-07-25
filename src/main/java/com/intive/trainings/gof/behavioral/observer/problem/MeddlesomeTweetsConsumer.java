@@ -1,4 +1,4 @@
-package com.intive.trainings.gof.behavioral.observer;
+package com.intive.trainings.gof.behavioral.observer.problem;
 
 import lombok.AllArgsConstructor;
 
