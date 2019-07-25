@@ -39,6 +39,9 @@ dependencies {
     // Use the awesome Spock testing and specification framework even with Java
     testCompile'org.spockframework:spock-core:1.2-groovy-2.5'
     testCompile 'junit:junit:4.12'
+
+    //compileOnly 'org.projectlombok:lombok:1.18.8'
+    //annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
 
 // Define the main class for the application
