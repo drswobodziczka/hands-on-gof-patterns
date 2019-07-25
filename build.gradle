@@ -32,13 +32,19 @@ repositories {
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:27.0.1-jre'
-    
+    compile group: 'cglib', name: 'cglib-nodep', version: '2.2'
+    // https://mvnrepository.com/artifact/cglib/cglib-nodep
+    testCompile 'com.google.guava:guava:27.0.1-jre'
+
     // Use the latest Groovy version for Spock testing
     testCompile 'org.codehaus.groovy:groovy-all:2.5.6'
 
     // Use the awesome Spock testing and specification framework even with Java
     testCompile'org.spockframework:spock-core:1.2-groovy-2.5'
     testCompile 'junit:junit:4.12'
+
+
+
 
     //compileOnly 'org.projectlombok:lombok:1.18.8'
     //annotationProcessor 'org.projectlombok:lombok:1.18.8'
