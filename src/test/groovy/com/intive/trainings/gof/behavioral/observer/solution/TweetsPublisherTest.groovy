@@ -12,7 +12,7 @@ class TweetsPublisherTest extends Specification {
         def tweet = Tweet.builder().message(message).build()
         def registered = Mock(TweetsConsumer)
         def notRegistered = Mock(TweetsConsumer)
-        publisher.register(registered)
+        publisher.registerObserver(registered)
 
         when:
         publisher.publishTweet(tweet)

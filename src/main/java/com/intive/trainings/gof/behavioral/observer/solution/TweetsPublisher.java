@@ -5,25 +5,32 @@ import com.intive.trainings.gof.behavioral.observer.TweetsConsumer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static java.util.Optional.ofNullable;
-
-public class TweetsPublisher {
+public class TweetsPublisher implements Subject {
 
     private List<TweetsConsumer> consumers = new ArrayList<>();
+    private Tweet lastTweet;
 
+    @Override
     public void publishTweet(Tweet tweet) {
+        lastTweet = tweet;
+        notifyObservers();
+    }
+
+    @Override
+    public void notifyObservers() {
         consumers.forEach(cons -> {
-            cons.consume(tweet);
+            cons.consume(lastTweet);
         });
     }
 
-    public void register(TweetsConsumer tweetsConsumer) {
+    @Override
+    public void registerObserver(TweetsConsumer tweetsConsumer) {
         consumers.add(tweetsConsumer);
     }
 
-    public void unregister(TweetsConsumer tweetsConsumer) {
+    @Override
+    public void unregisterObserver(TweetsConsumer tweetsConsumer) {
         consumers.remove(tweetsConsumer);
     }
 }

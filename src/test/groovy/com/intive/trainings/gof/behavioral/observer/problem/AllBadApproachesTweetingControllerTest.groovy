@@ -18,7 +18,7 @@ class AllBadApproachesTweetingControllerTest extends Specification {
     *
     * (-) tweets are not consumed!
     * */
-    def "published tweet is NOT read by consumers when they are not connected"() {
+    def "not aware consumers"() {
         given: "a tweet and not aware consumers"
         def consumers = newArrayList Mock(TweetsConsumer), Mock(TweetsConsumer)
         def message = "aha!"
@@ -39,15 +39,18 @@ class AllBadApproachesTweetingControllerTest extends Specification {
     *
     * (-) additional artificial class needed
     * (-) publishing and consuming MUST be done synchronously and at the same time
+    * (-) consumers must be known at the beginning and they all will listen to all the tweets even
+    * then are not interested
+    * (-) there is no way to stop listing to tweets i.e.: unregister
     * */
-    def "published tweet is read by all consumers thanks to mediator class"() {
-        given: "a tweet and consumers and the OBER TweetingController"
+    def "artificial controller glueing producers and consumers"() {
+        given: "a tweet and consumers and the artificial controller"
         def consumers = newArrayList Mock(TweetsConsumer), Mock(TweetsConsumer)
         def message = "aha!"
         def tweet = Tweet.builder().message(message).build()
         def twitter = new TweetingController(publisher, consumers)
 
-        when: "tweet is published by twitter"
+        when: "tweet is published by artificial controller"
         twitter.tweet(tweet)
 
         then: "tweet is consumed by each consumer"
@@ -64,9 +67,10 @@ class AllBadApproachesTweetingControllerTest extends Specification {
     * (-) consumers are not aware -- when they should search for new tweet, so they have to guess, block in a loop, handle everything
     * (-) consuming is burned inside consumers logics so it's not testable!
     * (-) or we have to spy!
+    * (-) consumers can not stop listening
     * */
-    def "published tweet is read by meddlesome consumers directly"() {
-        given: "a tweet"
+    def "meddlesome consumers fixed to producer while creation"() {
+        given: "a tweet and consumers "
         def message = "aha!"
         def tweet = Tweet.builder().message(message).build()
         def spy = Spy(MeddlesomeTweetsConsumer, constructorArgs: [publisher])
@@ -83,6 +87,28 @@ class AllBadApproachesTweetingControllerTest extends Specification {
         consumers.each {
             expect:
             1 * it.consume()
+        }
+    }
+
+    /*
+    * Problems?
+    *
+    * (-) publisher must be passed with complete list of consumers
+    * (-) no way to start/stop listening to tweets once publisher is DONE
+    * 
+    * */
+    def "publisher coupled to consumers while creation"() {
+        given: "publisher and consumers"
+        def consumers = newArrayList Mock(TweetsConsumer), Mock(TweetsConsumer)
+        def publisher = new FixedTweetsPublisher(consumers)
+
+        when: "some tweet is published and consumer arr"
+        publisher.publishTweet()
+
+        then: "the it's consumed by each consumer"
+        consumers.each {
+            expect:
+            1 * it.consume(_ as Tweet);
         }
     }
 }
