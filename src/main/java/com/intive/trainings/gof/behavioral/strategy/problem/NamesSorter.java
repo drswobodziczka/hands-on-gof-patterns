@@ -1,4 +1,4 @@
-package com.intive.trainings.gof.behavioral.strategy;
+package com.intive.trainings.gof.behavioral.strategy.problem;
 
 import com.google.common.base.CharMatcher;
 
@@ -30,6 +30,12 @@ public class NamesSorter {
                 }
                 return 0;
             });
+        }
+        else if (sortType.equals("byThoseWhichIKnowMost")) {
+            // ... dependency to another object here!
+        }
+        else if (sortType.equals("byNumberOfA_AND_byLength")) {
+            // ... mixed approaches and additional next level
         }
         else {
             names.sort(null);

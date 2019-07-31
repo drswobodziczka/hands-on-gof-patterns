@@ -1,5 +1,4 @@
-package com.intive.trainings.gof.behavioral.strategy
-
+package com.intive.trainings.gof.behavioral.strategy.solution
 
 import spock.lang.Specification
 

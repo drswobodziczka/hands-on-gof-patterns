@@ -1,4 +1,4 @@
-package com.intive.trainings.gof.behavioral.strategy;
+package com.intive.trainings.gof.behavioral.strategy.solution;
 
 import com.google.common.base.CharMatcher;
 
