@@ -1,34 +1,31 @@
 package com.intive.trainings.gof.behavioral.memento.solution;
 
-import lombok.AllArgsConstructor;
-
 import java.util.Stack;
 
-@AllArgsConstructor
 public class CareTakerEditor {
 
-    private DocumentOriginator documentOriginator;
-    private Stack<DocumentOriginator.Memento> history;
+    private final DocumentOriginator documentOriginator;
+    private final Stack<DocumentOriginator.Memento> history;
+
+    public CareTakerEditor(DocumentOriginator documentOriginator) {
+        this.documentOriginator = documentOriginator;
+        history = new Stack<>();
+    }
 
     public void changeText(String newText) {
-        createSnapshot();
-        // TODO
+        documentOriginator.setText(newText);
     }
 
     public void changeCursorPosition(int i) {
-        createSnapshot();
-        // TODO
+        documentOriginator.setCursorPosition(i);
     }
 
     public void changeFont(String newFont) {
-        createSnapshot();
-        // TODO
+        documentOriginator.setCurrentFont(newFont);
     }
 
     private void createSnapshot() {
-        DocumentOriginator.Memento item = null;
         // TODO
-        history.push(item);
     }
 
     public void undo() {

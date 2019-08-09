@@ -20,7 +20,12 @@ class DocumentOriginator {
     }
 
     public void restore(Memento memento) {
+        setText(memento.text);
+        setCursorPosition(memento.cursorPosition);
+        setCurrentFont(memento.currentFont);
+        setStyles(memento.styles);
     }
+
 
     @Getter
     class Memento {
