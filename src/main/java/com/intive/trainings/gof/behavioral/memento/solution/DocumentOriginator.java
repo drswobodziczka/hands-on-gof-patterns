@@ -2,51 +2,21 @@ package com.intive.trainings.gof.behavioral.memento.solution;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Builder
+@Getter
+@Setter
 class DocumentOriginator {
     private String text;
     private String currentFont;
     private int cursorPosition;
     private List<String> styles;
 
-    public String getText() {
-        return text;
-    }
-
-    public String getCurrentFont() {
-        return currentFont;
-    }
-
-    public int getCursorPosition() {
-        return cursorPosition;
-    }
-
-    public List<String> getStyles() {
-        return styles;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setCurrentFont(String currentFont) {
-        this.currentFont = currentFont;
-    }
-
-    public void setCursorPosition(int cursorPosition) {
-        this.cursorPosition = cursorPosition;
-    }
-
-    public void setStyles(List<String> styles) {
-        this.styles = styles;
-    }
-
     public Memento save() {
-        return null;
-        // TODO
+        return new Memento(text, currentFont, cursorPosition, styles);
     }
 
     public void restore(Memento memento) {
