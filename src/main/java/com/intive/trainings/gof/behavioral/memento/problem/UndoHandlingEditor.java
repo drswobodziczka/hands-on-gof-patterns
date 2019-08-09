@@ -3,10 +3,9 @@ package com.intive.trainings.gof.behavioral.memento.problem;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Stack;
 
-import static java.util.Collections.*;
+import static java.util.Collections.EMPTY_LIST;
 
 @AllArgsConstructor
 public class UndoHandlingEditor {
@@ -22,6 +21,11 @@ public class UndoHandlingEditor {
     public void changeCursorPosition(int i) {
         createSnapshot();
         document.cursorPosition = i;
+    }
+
+    public void changeFont(String newFont) {
+        createSnapshot();
+        document.currentFont = newFont;
     }
 
     private void createSnapshot() {
@@ -45,10 +49,5 @@ public class UndoHandlingEditor {
         document.cursorPosition = snapshot.getCursorPosition();
         document.currentFont = snapshot.getCurrentFont();
         document.styles = new ArrayList<>(snapshot.getStyles());
-    }
-
-    public void changeFont(String newFont) {
-        createSnapshot();
-        document.currentFont = newFont;
     }
 }
