@@ -13,22 +13,29 @@ public class CareTakerEditor {
     }
 
     public void changeText(String newText) {
+        createSnapshot();
         documentOriginator.setText(newText);
     }
 
     public void changeCursorPosition(int i) {
+        createSnapshot();
         documentOriginator.setCursorPosition(i);
     }
 
     public void changeFont(String newFont) {
+        createSnapshot();
         documentOriginator.setCurrentFont(newFont);
     }
 
     private void createSnapshot() {
-        // TODO
+        DocumentOriginator.Memento memento = documentOriginator.save();
+        history.push(memento);
     }
 
     public void undo() {
-        // TODO
+        if (!history.empty()) {
+            DocumentOriginator.Memento memento = history.pop();
+            documentOriginator.restore(memento);
+        }
     }
 }
