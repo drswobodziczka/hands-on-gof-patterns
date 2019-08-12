@@ -2,6 +2,8 @@ package com.intive.trainings.gof.behavioral.memento.solution;
 
 import java.util.Stack;
 
+import static java.util.Collections.emptyList;
+
 public class CareTakerEditor {
 
     private final DocumentOriginator documentOriginator;
@@ -24,12 +26,16 @@ public class CareTakerEditor {
 
     public void changeFont(String newFont) {
         createSnapshot();
-        documentOriginator.setCurrentFont(newFont);
+        documentOriginator.setFont(newFont);
     }
 
-    private void createSnapshot() {
-        DocumentOriginator.Memento memento = documentOriginator.save();
-        history.push(memento);
+    public void clearDocument() {
+        createSnapshot();
+        documentOriginator.setFont("latina");
+        documentOriginator.setText("");
+        documentOriginator.setFontSize(11);
+        documentOriginator.setCursorPosition(0);
+        documentOriginator.setStyles(emptyList());
     }
 
     public void undo() {
@@ -37,5 +43,10 @@ public class CareTakerEditor {
             DocumentOriginator.Memento memento = history.pop();
             documentOriginator.restore(memento);
         }
+    }
+
+    private void createSnapshot() {
+        DocumentOriginator.Memento memento = documentOriginator.save();
+        history.push(memento);
     }
 }

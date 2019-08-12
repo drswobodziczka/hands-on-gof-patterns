@@ -11,18 +11,20 @@ import java.util.List;
 @Setter
 class DocumentOriginator {
     private String text;
-    private String currentFont;
+    private String font;
     private int cursorPosition;
+    private int fontSize;
     private List<String> styles;
 
     public Memento save() {
-        return new Memento(text, currentFont, cursorPosition, styles);
+        return new Memento(text, font, cursorPosition, fontSize, styles);
     }
 
     public void restore(Memento memento) {
         setText(memento.text);
         setCursorPosition(memento.cursorPosition);
-        setCurrentFont(memento.currentFont);
+        setFont(memento.font);
+        setFontSize(memento.fontSize);
         setStyles(memento.styles);
     }
 
@@ -30,16 +32,17 @@ class DocumentOriginator {
     @Getter
     class Memento {
         private final String text;
-        private final String currentFont;
+        private final String font;
         private final int cursorPosition;
+        private final int fontSize;
         private final List<String> styles;
 
-        Memento(String text, String currentFont, int cursorPosition, List<String> styles) {
+        Memento(String text, String font, int cursorPosition, int fontSize, List<String> styles) {
             this.text = text;
-            this.currentFont = currentFont;
+            this.font = font;
             this.cursorPosition = cursorPosition;
+            this.fontSize = fontSize;
             this.styles = styles;
         }
     }
-
 }

@@ -11,18 +11,18 @@ class DocumentOriginatorTest extends Specification {
         originator = DocumentOriginator.builder()
                 .text("text")
                 .cursorPosition(1)
-                .currentFont("latina")
+                .font("latina")
                 .build()
 
         when: "document is saved and then changed"
         def memento = originator.save()
-        originator.setCurrentFont("times-new-romain")
+        originator.setFont("times-new-romain")
         originator.setCursorPosition(100)
         originator.restore(memento)
 
         then: "document state is restored from memento"
         originator.getText() == "text"
         originator.getCursorPosition() == 1
-        originator.getCurrentFont() == "latina"
+        originator.getFont() == "latina"
     }
 }
