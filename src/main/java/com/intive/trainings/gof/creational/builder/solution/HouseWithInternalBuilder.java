@@ -11,7 +11,7 @@ import java.util.List;
  * -- no polymorphism
  *
 * */
-public class HouseWithBuilder {
+public class HouseWithInternalBuilder {
     private int windows;
     private int doors;
     private int rooms;
@@ -24,7 +24,7 @@ public class HouseWithBuilder {
     private Fence fence;
     private String name;
 
-    public HouseWithBuilder(Builder builder){
+    public HouseWithInternalBuilder(Builder builder){
         this.windows = builder.windows;
         this.doors = builder.doors;
         this.rooms = builder.rooms;
@@ -121,8 +121,8 @@ public class HouseWithBuilder {
             return this;
         }
 
-        public HouseWithBuilder build() {
-            return new HouseWithBuilder(this);
+        public HouseWithInternalBuilder build() {
+            return new HouseWithInternalBuilder(this);
         }
     }
 }

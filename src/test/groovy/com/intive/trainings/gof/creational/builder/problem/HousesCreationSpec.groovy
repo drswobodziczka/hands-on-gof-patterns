@@ -1,6 +1,6 @@
 package com.intive.trainings.gof.creational.builder.problem
 
-import com.intive.trainings.gof.creational.builder.solution.HouseWithBuilder
+import com.intive.trainings.gof.creational.builder.solution.HouseWithInternalBuilder
 import spock.lang.Specification
 
 class HousesCreationSpec extends Specification {
@@ -30,7 +30,7 @@ class HousesCreationSpec extends Specification {
     }
 
     def "create new hause with builder"() {
-        def houseWith = new HouseWithBuilder.Builder()
+        def houseWith = new HouseWithInternalBuilder.Builder()
         def house = houseWith
                 .windows(1)
                 .doors(21)
