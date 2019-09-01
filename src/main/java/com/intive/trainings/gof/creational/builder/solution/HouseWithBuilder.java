@@ -4,7 +4,13 @@ import com.intive.trainings.gof.creational.builder.*;
 
 import java.util.List;
 
-// TODO: document
+/**
+ * Simple builder implementation.
+ * -- builder as an inner static class
+ * -- class constructor taking builder instance as a parameter
+ * -- no polymorphism
+ *
+* */
 public class HouseWithBuilder {
     private int windows;
     private int doors;
