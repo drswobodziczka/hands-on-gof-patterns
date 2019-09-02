@@ -1,9 +1,7 @@
 package com.intive.trainings.gof.creational.builder.solution;
 
-import com.intive.trainings.gof.creational.builder.FancyStatue;
-import com.intive.trainings.gof.creational.builder.Fence;
-import com.intive.trainings.gof.creational.builder.Garden;
-import com.intive.trainings.gof.creational.builder.SwimPool;
+import com.intive.trainings.gof.creational.builder.*;
+import com.intive.trainings.gof.creational.builder.Garden.GardenFactory;
 
 import java.util.List;
 
@@ -13,7 +11,7 @@ public interface HouseBuilder {
     HouseBuilder rooms(int rooms);
     HouseBuilder floors(int floors);
     HouseBuilder swimPool(SwimPool swimPool);
-    HouseBuilder garage();
+    HouseBuilder garage(Garage garage);
     HouseBuilder garden(Garden garden);
     HouseBuilder fancyStatues(List<FancyStatue> fancyStatues);
     HouseBuilder fence(Fence fence);

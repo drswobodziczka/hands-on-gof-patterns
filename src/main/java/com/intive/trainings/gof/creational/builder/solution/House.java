@@ -1,12 +1,15 @@
 package com.intive.trainings.gof.creational.builder.solution;
 
 import com.intive.trainings.gof.creational.builder.*;
+import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * HouseProduct
  * */
+@Getter
 public class House {
     private int windows;
     private int doors;
@@ -44,7 +47,7 @@ public class House {
         private SwimPool swimPool;
         private Garage garage;
         private Garden garden;
-        private List<FancyStatue> fancyStatues;
+        private List<FancyStatue> fancyStatues = new ArrayList<>();
         private Fence fence;
         private String name;
 
@@ -78,8 +81,8 @@ public class House {
         }
 
         @Override
-        public HouseBuilder garage() {
-            this.garage = new GarageBuilderImpl().buildGarage().getGarage();
+        public HouseBuilder garage(Garage garage) {
+            this.garage = garage;
             return this;
         }
 
@@ -118,7 +121,7 @@ public class House {
             return this;
         }
 
-        public House build() {
+        public House getHouse() {
             return new House(this);
         }
     }

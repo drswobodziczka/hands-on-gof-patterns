@@ -10,7 +10,10 @@ public class GarageBuilderImpl implements GarageBuilder {
         return this;
     }
 
-    public GarageImpl getGarage() {
+    public GarageImpl getResult() {
         return garage;
+    }
+
+    private static class GarageImpl implements Garage {
     }
 }

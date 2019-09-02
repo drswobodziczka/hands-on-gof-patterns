@@ -1,22 +1,24 @@
 package com.intive.trainings.gof.creational.builder.solution;
 
 import com.intive.trainings.gof.creational.builder.*;
+import lombok.Getter;
 
 import java.util.List;
 
 /**
  * HousePrice Product
  * */
+@Getter
 public class HousePrice {
-    private int windowsPrice;
-    private int doorsPrice;
-    private int roomsPrice;
-    private int floorsPrice;
-    private int swimPoolPrice;
-    private int garagePrice;
-    private int gardenPrice;
-    private int fancyStatuesPrice;
-    private int fencePrice;
+    private Integer windowsPrice;
+    private Integer doorsPrice;
+    private Integer roomsPrice;
+    private Integer floorsPrice;
+    private Integer swimPoolPrice;
+    private Integer garagePrice;
+    private Integer gardenPrice;
+    private Integer fancyStatuesPrice;
+    private Integer fencePrice;
 
     public HousePrice(HousePriceBuilder housePriceBuilder){
         this.windowsPrice = housePriceBuilder.windowsPrice;
@@ -75,9 +77,9 @@ public class HousePrice {
             return this;
         }
 
-        public HouseBuilder garage() {
-            GarageCostBuilder garageCostBuilder = new GarageCostBuilder().buildGarage();
-            this.garagePrice = garageCostBuilder.getResult().getValue();
+        public HouseBuilder garage(Garage garage) {
+            GarageCostBuilder garageCostBuilder = new GarageCostBuilder(garage).buildGarage();
+            this.garagePrice = garageCostBuilder.getResult().getCost();
             return this;
         }
 
@@ -108,7 +110,7 @@ public class HousePrice {
             return this;
         }
 
-        public HousePrice build() {
+        public HousePrice getPrice() {
             return new HousePrice(this);
         }
     }
