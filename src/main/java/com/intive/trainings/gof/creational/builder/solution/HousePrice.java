@@ -77,9 +77,9 @@ public class HousePrice {
             return this;
         }
 
-        public HouseBuilder garage(Garage garage) {
-            GarageCostBuilder garageCostBuilder = new GarageCostBuilder(garage).buildGarage();
-            this.garagePrice = garageCostBuilder.getResult().getCost();
+        public HouseBuilder garage() {
+            GarageCostBuilder garageCostBuilder = new GarageCostBuilder().buildGarage();
+            this.garagePrice = garageCostBuilder.getGaragePrice().getCost();
             return this;
         }
 

@@ -1,8 +1,12 @@
 package com.intive.trainings.gof.creational.builder.solution;
 
-import com.intive.trainings.gof.creational.builder.GarageBuilderImpl;
+import com.intive.trainings.gof.creational.builder.FancyStatueImpl;
+import com.intive.trainings.gof.creational.builder.FenceImpl;
 import com.intive.trainings.gof.creational.builder.Garden.GardenFactory;
 import com.intive.trainings.gof.creational.builder.GardenImpl;
+import com.intive.trainings.gof.creational.builder.SwimPoolImpl;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class HouseBuildingDirector {
 
@@ -22,29 +26,20 @@ public class HouseBuildingDirector {
                 .windows(4)
                 // factory method example: you can complement builder with factory
                 .garden(gardenFactory.create())
-                // !! TODO: desing pitfall, what if houseBuilder is HousePriceBuilder ??
-                .garage(new GarageBuilderImpl().buildGarage().getResult());
+                .garage();
     }
 
     public void makeStandardHouseWithSwimpoolAndGarage() {
+        makeStandardHouse();
         houseBuilder
-                .doors(1)
-                .floors(1)
-                .rooms(3)
-                .windows(4)
-                .garden(gardenFactory.create())
-                // !! TODO: desing pitfall, what if houseBuilder is HousePriceBuilder ??
-                .garage(new GarageBuilderImpl().buildGarage().getResult());
+                .swimPool(new SwimPoolImpl())
+                .garage();
     }
 
     public void makeAllInclusiveHouse() {
+        makeStandardHouseWithSwimpoolAndGarage();
         houseBuilder
-                .doors(1)
-                .floors(1)
-                .rooms(3)
-                .windows(4)
-                .garden(gardenFactory.create())
-                // !! TODO: desing pitfall, what if houseBuilder is HousePriceBuilder ??
-                .garage(new GarageBuilderImpl().buildGarage().getResult());
+                .fancyStatues(newArrayList(new FancyStatueImpl()))
+                .fence(new FenceImpl());
     }
 }

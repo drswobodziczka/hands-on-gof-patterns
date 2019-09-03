@@ -11,7 +11,7 @@ public interface HouseBuilder {
     HouseBuilder rooms(int rooms);
     HouseBuilder floors(int floors);
     HouseBuilder swimPool(SwimPool swimPool);
-    HouseBuilder garage(Garage garage);
+    HouseBuilder garage();
     HouseBuilder garden(Garden garden);
     HouseBuilder fancyStatues(List<FancyStatue> fancyStatues);
     HouseBuilder fence(Fence fence);

@@ -6,6 +6,8 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 /**
  * HouseProduct
  * */
@@ -23,22 +25,22 @@ public class House {
     private Fence fence;
     private String name;
 
-    public House(Builder builder){
-        this.windows = builder.windows;
-        this.doors = builder.doors;
-        this.rooms = builder.rooms;
-        this.floors = builder.floors;
-        this.address = builder.address;
-        this.swimPool = builder.swimPool;
-        this.garage = builder.garage;
-        this.garden = builder.garden;
-        this.fancyStatues = builder.fancyStatues;
-        this.fence = builder.fence;
-        this.name = builder.name;
-        builder.reset();
+    public House(RealHouseBuilder realHouseBuilder){
+        this.windows = realHouseBuilder.windows;
+        this.doors = realHouseBuilder.doors;
+        this.rooms = realHouseBuilder.rooms;
+        this.floors = realHouseBuilder.floors;
+        this.address = realHouseBuilder.address;
+        this.swimPool = realHouseBuilder.swimPool;
+        this.garage = realHouseBuilder.garage;
+        this.garden = realHouseBuilder.garden;
+        this.fancyStatues = newArrayList(realHouseBuilder.fancyStatues);
+        this.fence = realHouseBuilder.fence;
+        this.name = realHouseBuilder.name;
+        realHouseBuilder.reset();
     }
 
-    public static class Builder implements HouseBuilder {
+    public static class RealHouseBuilder implements HouseBuilder {
         private Integer windows;
         private Integer doors;
         private Integer rooms;
@@ -81,18 +83,18 @@ public class House {
         }
 
         @Override
-        public HouseBuilder garage(Garage garage) {
-            this.garage = garage;
+        public HouseBuilder garage() {
+            this.garage = new GarageBuilderImpl().buildGarage().getResult();
             return this;
         }
 
-        public Builder garden(Garden garden) {
+        public RealHouseBuilder garden(Garden garden) {
             this.garden = garden;
             return this;
         }
 
         public HouseBuilder fancyStatues(List<FancyStatue> fancyStatues) {
-            this.fancyStatues = fancyStatues;
+            this.fancyStatues = newArrayList(fancyStatues);
             return this;
         }
 
@@ -101,7 +103,7 @@ public class House {
             return this;
         }
 
-        public Builder name(String name) {
+        public RealHouseBuilder name(String name) {
             this.name = name;
             return this;
         }
