@@ -1,9 +1,6 @@
-package com.intive.trainings.gof.structural.adapter
+package com.intive.trainings.gof.structural.adapter.holesandpegs
 
-import com.intive.trainings.gof.structural.adapter.holesandpegs.RoundHole
-import com.intive.trainings.gof.structural.adapter.holesandpegs.RoundPeg
-import com.intive.trainings.gof.structural.adapter.holesandpegs.SquarePeg
-import com.intive.trainings.gof.structural.adapter.holesandpegs.SquarePegAdapter
+
 import spock.lang.Specification
 
 /*
