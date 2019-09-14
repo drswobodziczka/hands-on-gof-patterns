@@ -1,7 +1,14 @@
 package com.intive.trainings.gof.structural.adapter
 
+import com.intive.trainings.gof.structural.adapter.holesandpegs.RoundHole
+import com.intive.trainings.gof.structural.adapter.holesandpegs.RoundPeg
+import com.intive.trainings.gof.structural.adapter.holesandpegs.SquarePeg
+import com.intive.trainings.gof.structural.adapter.holesandpegs.SquarePegAdapter
 import spock.lang.Specification
 
+/*
+* Client checking if particular pegs are matching holes
+* */
 class RoundHoleTest extends Specification {
     def "smaller round peg fits to bigger round hole"() {
         given:

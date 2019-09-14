@@ -1,4 +1,4 @@
-package com.intive.trainings.gof.structural.adapter;
+package com.intive.trainings.gof.structural.adapter.holesandpegs;
 
 /*
 * Client class

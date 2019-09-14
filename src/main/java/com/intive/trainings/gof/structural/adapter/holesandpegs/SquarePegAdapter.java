@@ -1,6 +1,6 @@
-package com.intive.trainings.gof.structural.adapter;
+package com.intive.trainings.gof.structural.adapter.holesandpegs;
 
-class SquarePegAdapter extends RoundPeg {
+public class SquarePegAdapter extends RoundPeg {
     private SquarePeg adaptee;
 
     SquarePegAdapter(SquarePeg adaptee) {

@@ -1,9 +1,9 @@
-package com.intive.trainings.gof.structural.adapter;
+package com.intive.trainings.gof.structural.adapter.holesandpegs;
 
 /*
 * Service a.k.a. Adaptee class
 * */
-class SquarePeg {
+public class SquarePeg {
     private double width;
 
     SquarePeg(double width) {
