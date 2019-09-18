@@ -3,9 +3,10 @@ package com.intive.trainings.gof.behavioral.memento.problem;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
-import static java.util.Collections.EMPTY_LIST;
+import static java.util.Collections.emptyList;
 
 @AllArgsConstructor
 public class UndoHandlingEditor {
@@ -33,7 +34,7 @@ public class UndoHandlingEditor {
                 document.text,
                 document.currentFont,
                 document.cursorPosition,
-                new ArrayList<String>(document.styles == null ? EMPTY_LIST : document.styles));
+                new ArrayList<String>(document.styles == null ? emptyList(): document.styles));
         snapshots.push(item);
     }
 

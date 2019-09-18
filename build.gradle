@@ -12,9 +12,6 @@ plugins {
     // Apply the java plugin to add support for Java
     id 'java'
 
-    // Apply the application plugin to add support for building an application
-    id 'application'
-
     // Apply the groovy plugin to also add support for Groovy (needed for Spock)
     id 'groovy'
 
@@ -33,6 +30,7 @@ dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:27.0.1-jre'
     compile group: 'cglib', name: 'cglib-nodep', version: '2.2'
+    
     // https://mvnrepository.com/artifact/cglib/cglib-nodep
     testCompile 'com.google.guava:guava:27.0.1-jre'
 
@@ -46,6 +44,3 @@ dependencies {
     //compileOnly 'org.projectlombok:lombok:1.18.8'
     //annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
-
-// Define the main class for the application
-// mainClassName = 
